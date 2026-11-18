@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use HoldTrack, please cite it as below."
+title: "HoldTrack: Two Decisions at Contact in Multi-Person Tracking"
+type: software
+version: "0.1.0"
+license: Apache-2.0
+authors:
+  - family-names: "Bourdon"
+    given-names: "Théophane"

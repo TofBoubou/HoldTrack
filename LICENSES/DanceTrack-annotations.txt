@@ -1,0 +1,5 @@
+DanceTrack annotations
+
+holdtrack/identity/data/second_link_pairs.npz holds features and labels derived from the annotations of the DanceTrack training and validation videos.
+DanceTrack annotations are released under the Creative Commons Attribution 4.0 International license (CC BY 4.0): https://github.com/DanceTrack/DanceTrack
+Sun et al., "DanceTrack: Multi-Object Tracking in Uniform Appearance and Diverse Motion", 2022.

@@ -1,0 +1,8 @@
+"""Name the fixed view-matching settings."""
+
+ANCHOR_WEIGHT = 2
+ANCHOR_SCORE_MIN = 0.01
+YOLO_SCORE_MIN = 0.3
+DFINE_SCORE_MIN = 0.5
+RF_SCORE_MIN = 0.3
+VIEW_MATCH_IOU = 0.7
