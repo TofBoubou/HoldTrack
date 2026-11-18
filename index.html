@@ -1,0 +1,152 @@
+<!doctype html>
+<!-- Page de projet HoldTrack (GitHub Pages). À compléter à la publication : lien arXiv (2 endroits, « arXiv link coming soon » et la citation), score MOT17 final, demo.mp4 et demo.gif. -->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="google-site-verification" content="PTrawsU-ZDm50_GUhGuoflVB1Ro8ujcCdFOPWuCAvAQ" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>HoldTrack: Two Decisions at Contact in Multi-Person Tracking</title>
+<meta name="description" content="HoldTrack: 89.4 HOTA on the DanceTrack test set, 9.8 points above the best published tracker.">
+<meta property="og:title" content="HoldTrack: Two Decisions at Contact in Multi-Person Tracking">
+<meta property="og:description" content="89.4 HOTA on the DanceTrack test set, 9.8 points above the best published tracker; the highest HOTA among published trackers on MOT17.">
+<meta property="og:image" content="teaser.png">
+<style>
+  :root {
+    --ink: #1a1a1a; --muted: #5a5a5a; --line: #d9d9d9; --bg: #ffffff;
+    --accent: #0072b2; --ours: #e69f00;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--ink);
+    font-family: "Latin Modern Roman", "CMU Serif", "Computer Modern Serif", Georgia, serif;
+    font-size: 18px; line-height: 1.55;
+  }
+  main { max-width: 960px; margin: 0 auto; padding: 48px 20px 64px; }
+  h1 { font-size: 2.1rem; line-height: 1.2; text-align: center; margin: 0 0 18px; font-weight: 700; }
+  .author { text-align: center; font-size: 1.15rem; margin: 0 0 24px; }
+  .affil { text-align: center; color: var(--muted); margin: 2px 0 24px; }
+  .links { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-bottom: 36px; }
+  .links a {
+    display: inline-block; padding: 8px 20px; border: 1px solid var(--ink); border-radius: 22px;
+    color: var(--ink); text-decoration: none; font-size: 1rem;
+  }
+  .links a:hover { background: var(--ink); color: var(--bg); }
+  figure { margin: 0 0 32px; }
+  figure img, figure video { width: 100%; height: auto; display: block; border-radius: 4px; }
+  figcaption { color: var(--muted); font-size: 0.95rem; margin-top: 8px; }
+  h2 { font-size: 1.4rem; margin: 44px 0 12px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+  p { margin: 0 0 14px; }
+  .headline { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 8px 0 8px; }
+  .stat { border: 1px solid var(--line); border-radius: 6px; padding: 16px 18px; }
+  .stat .num { font-size: 2.2rem; font-weight: 700; color: var(--ink); line-height: 1.1; }
+  .stat .lab { color: var(--muted); font-size: 0.95rem; }
+  table { border-collapse: collapse; width: 100%; font-size: 0.98rem; margin: 6px 0 4px; }
+  th, td { padding: 6px 8px; text-align: right; }
+  th:first-child, td:first-child { text-align: left; }
+  thead th { border-top: 1.5px solid var(--ink); border-bottom: 1px solid var(--ink); font-weight: 600; }
+  tbody tr:last-child td { border-bottom: 1.5px solid var(--ink); }
+  tr.ours td { font-weight: 700; }
+  .note { color: var(--muted); font-size: 0.9rem; margin-top: 4px; }
+  pre {
+    background: #f6f6f6; border: 1px solid var(--line); border-radius: 4px; padding: 14px;
+    overflow-x: auto; font-size: 0.85rem; line-height: 1.4;
+  }
+  footer { margin-top: 48px; color: var(--muted); font-size: 0.85rem; text-align: center; }
+  @media (max-width: 600px) {
+    body { font-size: 16px; }
+    h1 { font-size: 1.6rem; }
+    .table-wrap { overflow-x: auto; }
+  }
+</style>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="apple-touch-icon" href="favicon-180.png">
+</head>
+<body>
+<main>
+  <h1>HoldTrack: Two Decisions at Contact in Multi-Person Tracking</h1>
+  <p class="author">Théophane Bourdon</p>
+
+  <nav class="links">
+    <a href="HoldTrack.pdf">Paper (PDF)</a>
+    <a href="https://github.com/TofBoubou/HoldTrack">Code</a>
+    <a href="https://huggingface.co/TheophaneBourdon/HoldTrack">Weights</a>
+  </nav>
+
+  <figure>
+    <video src="demo.mp4" poster="teaser.png" autoplay muted loop playsinline></video>
+    <figcaption>One scene of DanceTrack. Top: the base system. Bottom: HoldTrack, on the same boxes. The thick box follows one dancer, with the color and the number of the identity she carries: in the base system she becomes 8 after a contact, then 2, the number of another dancer; in HoldTrack she is 6 again after each contact.</figcaption>
+  </figure>
+
+  <div class="headline">
+    <div class="stat"><div class="num">89.4</div><div class="lab">HOTA on the DanceTrack test set, 9.8 points above the best published tracker</div></div>
+    <div class="stat"><div class="num">+4.8</div><div class="lab">HOTA added by the two decisions to a base system that already ranks above every published tracker</div></div>
+    <div class="stat"><div class="num">68.9</div><div class="lab">HOTA on the MOT17 test set, the highest among published trackers</div></div>
+  </div>
+
+  <h2>Abstract</h2>
+  <p>In DanceTrack, dancers look alike and touch each other often as they change formation. For a strong tracker built on SAM 3, about three quarters of the HOTA that oracle corrections recover is lost when people are in contact, through misplaced boxes, identity switches and missed persons. At each contact we decide which person keeps an identity and where the box of a partly occluded person ends, from several models run over the whole video. For identities, a chain of 21 steps combines cues that err differently: faces, appearance, position and tracker passes that differ in memory update, in temporal direction or by mirroring. Passes share errors, yet a forward and a backward pass that both err pick the same wrong person less than half as often as two forward ones. The chain changes an identity when two cues agree, or on one cue under a condition on the identities, and includes a learned link classifier. DanceTrack annotates the full extent of each person, and a small corrector learns it from the outputs of fine-tuned detectors, frozen pose estimators and a body-mesh model, without fine-tuning the tracker. On 57 annotated videos, HoldTrack gives 96% of matched boxes their person's main identity. Run offline, it scores 89.4 HOTA on the DanceTrack test set, 9.8 points above the best published tracker. On MOT17, with its steps selected again, it scores 68.9 HOTA, the highest among published trackers. The box decision adds 1.6 points to a base system that already ranks above every published tracker, the identity decision 3.2, and both 4.8.</p>
+
+  <figure>
+    <img src="teaser.png" alt="Identity and box extent at contact, and DanceTrack test results">
+    <figcaption>(a) The forward vote gives a dancer a new identity after she reappears; the backward and mirrored passes keep it, and HoldTrack follows their agreement. (b) The corrector extends the box of a partly occluded dancer to the annotated extent. (c) DetA and AssA on the DanceTrack test set.</figcaption>
+  </figure>
+
+  <h2>Results</h2>
+  <p><strong>DanceTrack test set.</strong></p>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Method</th><th>HOTA</th><th>DetA</th><th>AssA</th><th>MOTA</th><th>IDF1</th></tr></thead>
+    <tbody>
+      <tr><td>ByteTrack</td><td>47.7</td><td>71.0</td><td>32.1</td><td>89.6</td><td>53.9</td></tr>
+      <tr><td>OC-SORT</td><td>55.1</td><td>80.4</td><td>40.4</td><td>92.2</td><td>54.9</td></tr>
+      <tr><td>DiffMOT</td><td>62.3</td><td>82.5</td><td>47.2</td><td>92.8</td><td>63.0</td></tr>
+      <tr><td>SUSHI</td><td>63.3</td><td>80.1</td><td>50.1</td><td>88.7</td><td>63.4</td></tr>
+      <tr><td>MeMOTR</td><td>68.5</td><td>80.5</td><td>58.4</td><td>89.9</td><td>71.2</td></tr>
+      <tr><td>CAMELTrack †</td><td>69.3</td><td>81.8</td><td>58.9</td><td>91.4</td><td>74.9</td></tr>
+      <tr><td>CO-MOT</td><td>69.4</td><td>82.1</td><td>58.9</td><td>91.2</td><td>71.9</td></tr>
+      <tr><td>MOTRv2</td><td>69.9</td><td>83.0</td><td>59.0</td><td>91.9</td><td>71.7</td></tr>
+      <tr><td>MOTIP</td><td>72.0</td><td>81.8</td><td>63.5</td><td>91.9</td><td>76.8</td></tr>
+      <tr><td>FDTA †</td><td>74.4</td><td>82.7</td><td>67.0</td><td>92.2</td><td>80.0</td></tr>
+      <tr><td>MOTIP2-X</td><td>74.8</td><td>84.3</td><td>66.5</td><td>92.5</td><td>78.7</td></tr>
+      <tr><td>SAM2MOT</td><td>75.8</td><td>79.7</td><td>72.2</td><td>88.5</td><td>83.9</td></tr>
+      <tr><td>MOTIP2-X †</td><td>77.1</td><td>85.4</td><td>69.8</td><td>93.3</td><td>81.2</td></tr>
+      <tr><td>LiAM-SAM</td><td>79.6</td><td>87.3</td><td>72.6</td><td>94.3</td><td>83.6</td></tr>
+      <tr class="ours"><td>HoldTrack †</td><td>89.4</td><td>91.0</td><td>87.9</td><td>96.4</td><td>94.8</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="note">Numbers of other trackers as published. †: the validation set is also used for training.</p>
+
+  <p style="margin-top:20px"><strong>MOT17 test set, private detections.</strong> Of the five published trackers above 70 HOTA on DanceTrack, three report no MOT17 result; MOTIP and MOTIP2 score below ByteTrack on it.</p>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Method</th><th>HOTA</th><th>DetA</th><th>AssA</th><th>MOTA</th><th>IDF1</th></tr></thead>
+    <tbody>
+      <tr><td>MOTIP</td><td>59.2</td><td>62.0</td><td>56.9</td><td>75.5</td><td>71.2</td></tr>
+      <tr><td>MOTIP2-X</td><td>60.7</td><td>63.9</td><td>58.0</td><td>77.3</td><td>72.6</td></tr>
+      <tr><td>ByteTrack</td><td>63.1</td><td>64.5</td><td>62.0</td><td>80.3</td><td>77.3</td></tr>
+      <tr><td>OC-SORT</td><td>63.2</td><td>63.2</td><td>63.4</td><td>78.0</td><td>77.5</td></tr>
+      <tr><td>StrongSORT</td><td>64.4</td><td>64.6</td><td>64.4</td><td>79.6</td><td>79.5</td></tr>
+      <tr><td>Deep OC-SORT</td><td>64.9</td><td>64.1</td><td>65.9</td><td>79.4</td><td>80.6</td></tr>
+      <tr><td>SUSHI</td><td>66.5</td><td>65.5</td><td>67.8</td><td>81.1</td><td>83.1</td></tr>
+      <tr><td>TrackTrack</td><td>67.1</td><td>66.4</td><td>68.2</td><td>81.8</td><td>83.1</td></tr>
+      <tr><td>CoNo-Link</td><td>67.1</td><td>66.7</td><td>67.8</td><td>82.7</td><td>83.7</td></tr>
+      <tr><td>SPAM</td><td>67.5</td><td>65.4</td><td>70.0</td><td>80.7</td><td>84.6</td></tr>
+      <tr class="ours"><td>HoldTrack</td><td>68.9</td><td>67.7</td><td>70.5</td><td>82.1</td><td>83.8</td></tr>
+    </tbody>
+  </table>
+  </div>
+
+  <h2>Citation</h2>
+<pre>@misc{bourdon2026holdtrack,
+  title  = {HoldTrack: Two Decisions at Contact in Multi-Person Tracking},
+  author = {Bourdon, Th{\'e}ophane},
+  year   = {2026},
+  note   = {arXiv preprint, link coming soon}
+}</pre>
+
+  <footer>Code under the Apache 2.0 license; each model file keeps the license of the model it derives from.</footer>
+</main>
+</body>
+</html>
