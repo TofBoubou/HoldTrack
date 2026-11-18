@@ -1,0 +1,45 @@
+[build-system]
+requires = ["setuptools>=70.2", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "holdtrack"
+version = "0.1.0"
+description = "Keeping identities through contact in segmentation-based person tracking"
+requires-python = ">=3.12,<3.13"
+license = {text = "Apache-2.0"}
+dependencies = ["numpy>=1.26,<3", "scipy>=1.11,<2", "Pillow>=10"]
+
+[project.scripts]
+holdtrack = "holdtrack.cli:main"
+
+[project.optional-dependencies]
+sam = ["torch>=2.10,<2.11", "torchvision>=0.25,<0.26", "ultralytics==8.4.64", "lap>=0.5.12", "einops>=0.8", "safetensors>=0.6", "huggingface-hub>=0.36", "hydra-core==1.3.2", "omegaconf==2.3.0", "antlr4-python3-runtime==4.9.3", "opencv-python>=4.10"]
+detect = ["rfdetr==1.12.0", "rfdetr-plus==1.1.0", "ultralytics==8.4.64", "torch>=2.10,<2.11", "torchvision>=0.25,<0.26", "PyYAML>=6"]
+eval = ["trackeval>=1.0", "pycocotools>=2.0"]
+identity = ["scikit-learn==1.9.0", "threadpoolctl>=3"]
+boxes = ["rfdetr==1.12.0", "rfdetr-plus==1.1.0", "transformers>=4.44", "accelerate>=1.0", "scikit-learn==1.9.0", "torch>=2.10,<2.11", "torchvision>=0.25,<0.26"]
+pose = ["onnxruntime-gpu>=1.22"]
+faces = ["torch>=2.10,<2.11", "torchvision>=0.25,<0.26", "transformers==4.44.2", "safetensors>=0.6", "omegaconf>=2.3", "PyYAML>=6", "fvcore", "opencv-python-headless>=4.8", "onnxruntime>=1.17", "onnx2torch>=1.5", "numpy<2.3"]
+dev = ["pytest>=8", "ruff>=0.12"]
+
+[tool.setuptools]
+license-files = ["LICENSE", "LICENSES/*.txt", "THIRD_PARTY_NOTICES.md"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["holdtrack*"]
+
+[tool.ruff]
+target-version = "py312"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I", "UP"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+
+[tool.setuptools.package-data]
+holdtrack = ["resources/*.json", "resources/fonts/*", "identity/data/*.npz"]

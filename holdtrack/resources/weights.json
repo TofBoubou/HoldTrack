@@ -1,0 +1,122 @@
+{
+  "schema": "holdtrack-public-weights-v1",
+  "weights": {
+    "sam3": {
+      "filename": "sam3.pt",
+      "sha256": "9999e2341ceef5e136daa386eecb55cb414446a00ac2b55eb2dfd2f7c3cf8c9e",
+      "url": null,
+      "license": "See LICENSES/SAM3.txt",
+      "description": "Official public SAM 3 video checkpoint"
+    },
+    "rf_large": {
+      "filename": "rf_large.pth",
+      "sha256": "8903b7d227cbbde936a42ba82cc47acca6d6bff8861248deabd7056f9a1f5f94",
+      "url": null,
+      "format": "state_dict",
+      "architecture": "RFDETRLargeDeprecated",
+      "resolution": 1344,
+      "classes": 1,
+      "model_config": {
+        "encoder": "dinov2_windowed_base",
+        "out_feature_indexes": [
+          2,
+          5,
+          8,
+          11
+        ],
+        "dec_layers": 3,
+        "two_stage": true,
+        "projector_scale": [
+          "P3",
+          "P5"
+        ],
+        "hidden_dim": 384,
+        "patch_size": 14,
+        "num_windows": 4,
+        "sa_nheads": 12,
+        "ca_nheads": 24,
+        "dec_n_points": 4,
+        "dim_feedforward": 2048,
+        "num_queries": 300,
+        "num_select": 300,
+        "postprocess_trace_alpha": 0.2,
+        "bbox_reparam": true,
+        "lite_refpoint_refine": true,
+        "layer_norm": true,
+        "amp": true,
+        "num_channels": 3,
+        "num_classes": 1,
+        "pretrain_weights": null,
+        "resolution": 1344,
+        "group_detr": 13,
+        "gradient_checkpointing": true,
+        "compile": false,
+        "cuda_graphs": false,
+        "fused_optimizer": false,
+        "positional_encoding_size": 37,
+        "ia_bce_loss": true,
+        "segmentation_head": false,
+        "use_grouppose_keypoints": false,
+        "keypoint_cross_attn": true,
+        "inter_instance_kp_attn": false,
+        "grouppose_keypoint_dim_downscale": 1,
+        "dual_projector": false,
+        "dual_projector_kp_only": false,
+        "num_keypoints_per_class": [],
+        "num_decoder_registers": 0,
+        "mask_downsample_ratio": 4,
+        "backbone_lora": false,
+        "freeze_encoder": false,
+        "license": "Apache-2.0",
+        "model_name": "RFDETRLargeDeprecated"
+      }
+    },
+    "rf_2xl": {
+      "filename": "rf_2xl.pth",
+      "sha256": "ccf2f57e34765514917bcea38158ad97b575e7070a4211e2dd91b1c72651d141",
+      "url": null,
+      "format": "state_dict",
+      "architecture": "RFDETR2XLarge",
+      "resolution": 1120,
+      "classes": 1,
+      "model_config": {
+        "resolution": 1120,
+        "num_classes": 1,
+        "num_queries": 300,
+        "num_select": 300
+      }
+    },
+    "yolo": {
+      "filename": "yolo.pth",
+      "sha256": "ee9cb04bf713a7c399bf7029eac2fce618075f010f64d34517ff0e989318e4bb",
+      "url": null,
+      "format": "state_dict",
+      "architecture": "yolo26x",
+      "resolution": 1280,
+      "classes": 80
+    },
+    "dfine": {
+      "filename": "dfine.pth",
+      "sha256": "616f57e483c9ae66f020eb91d82577bffe3f3eccb81129f7c2a3dd63f3352709",
+      "url": null,
+      "format": "state_dict",
+      "architecture": "D-FINE-L",
+      "resolution": 640,
+      "classes": 80
+    },
+    "reliability_large": {
+      "filename": "reliability_large.json",
+      "sha256": "acc42dca629020f9ca67eabbe02e85e6c2383a22c9f8faa08cd7c67ba30aad12",
+      "url": null,
+      "format": "json",
+      "bundled": true
+    },
+    "reliability_2xl": {
+      "filename": "reliability_2xl.json",
+      "sha256": "51c767451229418b96823fbbba746c50bd443f2a1a636764f7cbbb91166f69a6",
+      "url": null,
+      "format": "json",
+      "bundled": true
+    }
+  }
+}
